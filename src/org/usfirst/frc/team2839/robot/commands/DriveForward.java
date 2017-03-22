@@ -12,7 +12,7 @@ public class DriveForward extends Command {
     public DriveForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires (Robot.drivetrain); //import org.usfirst.frc.team2839.robot.Robot not java.sre, will have error until added to Robot class
+    	requires (Robot.drivetrain); //import org.usfirst.frc.team2839.robot.Robot not java.sre, will have error until added to Robot 									class
     }
 
     // Called just before this Command runs the first time 

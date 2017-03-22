@@ -9,11 +9,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2839.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team2839.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2839.robot.subsystems.*; //* is a wild card
 
 /**
- * The VM is configured to automatically run this class, and to call the
+ * A VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
@@ -21,6 +22,7 @@ import org.usfirst.frc.team2839.robot.subsystems.*; //* is a wild card
  */
 public class Robot extends IterativeRobot {//Robot class is the only place that knows about all subsystems
 
+	//Test comment
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); // ExampleSubsystem is equiv to a directory path 		& exampleSubsystem is the name of thar directory
 	public static final Drivetrain drivetrain = new Drivetrain();  //Drivetrain was System, new Drivetrain() was null
 	public static final Shooter shooter = new Shooter();
@@ -42,7 +44,7 @@ public class Robot extends IterativeRobot {//Robot class is the only place that 
 		vision = new Vision();
 		dashboard  = new Dashboard();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());    /////////////
+		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
@@ -59,6 +61,7 @@ public class Robot extends IterativeRobot {//Robot class is the only place that 
 
 	@Override
 	public void disabledPeriodic() {
+		dashboard.update();  //makes SmartDashboard live when in disabled mode
 		Scheduler.getInstance().run();
 	}
 

@@ -21,6 +21,11 @@ public class Dashboard extends Subsystem {
 	
 	public void update() {
 		SmartDashboard.putBoolean("Is limit switch closed?", Robot.shooter.isLS1Closed());
+		SmartDashboard.putNumber("IRVoltage", Robot.drivetrain.getIRSensorVoltage());
+		SmartDashboard.putNumber("IRAvgVoltage", Robot.drivetrain.getIRSensorAverageVoltage());
+		SmartDashboard.putNumber("Encoder Count", Robot.drivetrain.getEncoderCount());
+		SmartDashboard.putNumber("Encoder Rate", Robot.drivetrain.getEncoderRate());
+		SmartDashboard.putNumber("Joystick throttle", Robot.oi.stick.getThrottle());
 	}
 
     public void initDefaultCommand() {

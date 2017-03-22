@@ -26,6 +26,9 @@ public class RobotMap {
 	public static final int SHOOTER_SOL2 = 1;
 	public static final int SHOOTER_START_SWTICH =8 ;
 	public static final int SHOOTER_STOP_SWTICH = 9;
+	public static final int IR_DISTANCE_SENSOR = 6;
+	public static final int QUAD_ENCODER_CH_A = 6;
+	public static final int QUAD_ENCODER_CH_B = 7;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
