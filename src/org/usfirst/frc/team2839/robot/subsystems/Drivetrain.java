@@ -54,6 +54,10 @@ public class Drivetrain extends Subsystem {
 	public double getIRSensorAverageVoltage(){//this method returns somrthing so we define it as double, if void it would not return anything
 		return IRSensor.getAverageVoltage();
 	}
+	
+	public void resetEncoderCount(){
+		QEncoder.reset();
+	}
 	public double getEncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
 		return QEncoder.get();
 	}

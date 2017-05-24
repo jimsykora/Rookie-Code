@@ -1,8 +1,7 @@
 package org.usfirst.frc.team2839.robot.subsystems;
 
 import org.usfirst.frc.team2839.robot.Robot;
-import org.usfirst.frc.team2839.robot.commands.DashboardUpdate;
-import org.usfirst.frc.team2839.robot.commands.ShooterDeploy;
+import org.usfirst.frc.team2839.robot.commands.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +16,9 @@ public class Dashboard extends Subsystem {
 	public Dashboard(){
 						//pushing this button on the Smart Dashboard will activate this command
 		SmartDashboard.putData("Deploy Shooter",new ShooterDeploy());  //use new to create a new instance
+		SmartDashboard.putData("Drive to distance",new DriveDistance());  //use new to create a new instance
+		SmartDashboard.putData("Reset Yaw",new ResetYaw());
+		SmartDashboard.putData("Reset X",new ResetX());
 	}
 	
 	public void update() {
@@ -26,6 +28,11 @@ public class Dashboard extends Subsystem {
 		SmartDashboard.putNumber("Encoder Count", Robot.drivetrain.getEncoderCount());
 		SmartDashboard.putNumber("Encoder Rate", Robot.drivetrain.getEncoderRate());
 		SmartDashboard.putNumber("Joystick throttle", Robot.oi.stick.getThrottle());
+		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());
+		SmartDashboard.putNumber("NavX pitch", Robot.navXMicro.getPitch());
+		SmartDashboard.putNumber("NavX roll", Robot.navXMicro.getRoll());
+		SmartDashboard.putNumber("NavX x distance", Robot.navXMicro.getDisplacementX());
+		SmartDashboard.putNumber("NavX x gyro", Robot.navXMicro.getRawGyroX());
 	}
 
     public void initDefaultCommand() {
