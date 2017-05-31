@@ -4,13 +4,11 @@ package org.usfirst.frc.team2839.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2839.robot.commands.AutonomousCommand;
-import org.usfirst.frc.team2839.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2839.robot.commands.*; //* is a wild card
 import org.usfirst.frc.team2839.robot.subsystems.*; //* is a wild card
 
 /**
@@ -20,14 +18,15 @@ import org.usfirst.frc.team2839.robot.subsystems.*; //* is a wild card
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {//Robot class is the only place that knows about all subsystems
+public class Robot extends IterativeRobot {  //the Robot class is the only place that knows about all subsystems
 
 	//Test comment
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); // ExampleSubsystem is equiv to a directory path 		& exampleSubsystem is the name of thar directory
-	public static final Drivetrain drivetrain = new Drivetrain();  //Drivetrain was System, new Drivetrain() was null
-	public static final Shooter shooter = new Shooter();
-	public static final NavXMicro navXMicro = new NavXMicro();
-	//public static Vision vision;
+	public static  ExampleSubsystem exampleSubsystem; // ExampleSubsystem is equiv to a directory path 		& exampleSubsystem is the name of thar directory
+	public static  Drivetrain drivetrain;  //Drivetrain was System, new Drivetrain() was null
+	public static  Shooter shooter;
+	public static  NavXMicro navXMicro;
+	public static Vision vision;
+	
 	public static Dashboard dashboard; //Smart Dashboard & OI must be at the end
 	public static OI oi; //Smart Dashboard & OI must be at the end
 
@@ -40,14 +39,22 @@ public class Robot extends IterativeRobot {//Robot class is the only place that 
 	 */
 	@Override
 	public void robotInit() {
+		exampleSubsystem = new ExampleSubsystem();
+		drivetrain = new Drivetrain();
+		shooter = new Shooter();
+		navXMicro = new NavXMicro();
+		vision = new Vision();
 		
-		
-		//vision = new Vision();
-		dashboard  = new Dashboard();
-		oi = new OI();
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		dashboard  = new Dashboard(); //Smart Dashboard & OI must be at the end
+		
+		// OI must be constructed after subsystems. If the OI creates Commands
+        //(which it very likely will), subsystems are not guaranteed to be
+        // constructed yet. Thus, their requires() statements may grab null
+        // pointers. Bad news. Don't move it.
+		oi = new OI(); //Smart Dashboard & OI must be at the end
 	}
 
 	/**
