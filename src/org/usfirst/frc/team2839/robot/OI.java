@@ -1,5 +1,11 @@
 package org.usfirst.frc.team2839.robot;
 
+import org.usfirst.frc.team2839.robot.commands.CameraDown;
+import org.usfirst.frc.team2839.robot.commands.CameraLeft;
+import org.usfirst.frc.team2839.robot.commands.CameraRight;
+import org.usfirst.frc.team2839.robot.commands.CameraUp;
+import org.usfirst.frc.team2839.robot.commands.SpinnerStart;
+import org.usfirst.frc.team2839.robot.commands.SpinnerStop;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,9 +50,11 @@ public class OI {
 	Button J4 = new JoystickButton(stick, 4); //added for using Xbox gamepad
 	Button J2 = new JoystickButton(stick, 2); //added for using Xbox gamepad
 	Button J11 = new JoystickButton(stick, 11); //added, need to import
-	Button J5 = new JoystickButton(stick,5); 
+	Button J5 = new JoystickButton(stick, 5); 
 	Button J6 = new JoystickButton(stick, 6); 
 	Button J3 = new JoystickButton(stick, 3); //added, need to import      //////////
+	Button J7 = new JoystickButton(stick, 7); 
+
 	
 	public OI(){							//added
 		J1.whenPressed(new DriveForward());  //added
@@ -55,7 +63,12 @@ public class OI {
 		J4.whenPressed(new ShooterDeploy());
 		J2.whenPressed(new ShooterRetract());
 		J11.whenPressed(new MotorStartStop());
-		J5.whenPressed(new RearCameraOn());
-		J6.whenPressed(new FwdCameraOn());
+		J5.whenPressed(new CameraUp());
+		J5.whenReleased(new CameraDown());
+		J6.whenPressed(new CameraLeft());
+		J6.whenReleased(new CameraRight());
+		J3.whenPressed(new SpinnerStart());
+		J3.whenReleased(new SpinnerStop());
+		
 	}
 }

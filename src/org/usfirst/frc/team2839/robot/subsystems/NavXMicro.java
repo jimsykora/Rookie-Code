@@ -3,7 +3,8 @@ package org.usfirst.frc.team2839.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.I2C; // for navX micro
+import edu.wpi.first.wpilibj.SPI; // for navX-MXP
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,7 +19,7 @@ public class NavXMicro extends Subsystem {
 	
 	public NavXMicro(){
 		try {
-			ahrs = new AHRS(I2C.Port.kOnboard);
+			ahrs = new AHRS(SPI.Port.kMXP); //AHRS(I2C.Port.kOnboard); for navX micro;   AHRS(SPI.Port.kMXP); for navX-MXP
 		} catch (RuntimeException ex) {
 			DriverStation.reportError("NavX error" + ex.getMessage(), true);
 		}
@@ -59,8 +60,6 @@ public class NavXMicro extends Subsystem {
 	public double getRawGyroX() {
 		return ahrs.getRawGyroX();
 	}
-
-	
 	
 	public boolean isCalibrating() {
 		return ahrs.isCalibrating();
@@ -75,4 +74,3 @@ public class NavXMicro extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 }
-

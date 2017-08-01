@@ -19,6 +19,8 @@ public class Dashboard extends Subsystem {
 		SmartDashboard.putData("Drive to distance",new DriveDistance());  //use new to create a new instance
 		SmartDashboard.putData("Reset Yaw",new ResetYaw());
 		SmartDashboard.putData("Reset X",new ResetX());
+		SmartDashboard.putData("Start Spinner",new SpinnerStart());
+		SmartDashboard.putData("Stop Spinner",new SpinnerStop());
 	}
 	
 	public void update() {
@@ -38,7 +40,6 @@ public class Dashboard extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DashboardUpdate());
     }
 }
 

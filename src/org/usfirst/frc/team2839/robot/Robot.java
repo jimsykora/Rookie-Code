@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2839.robot.commands.*; //* is a wild card
 import org.usfirst.frc.team2839.robot.subsystems.*; //* is a wild card
+import org.usfirst.frc.team2839.robot.subsystems.CameraServo;
 
 /**
  * A VM is configured to automatically run this class, and to call the
@@ -26,6 +27,8 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 	public static  Shooter shooter;
 	public static  NavXMicro navXMicro;
 	public static Vision vision;
+	public static CameraServo cameraServo;
+	public static SpinnerPID spinnerPID;
 	
 	public static Dashboard dashboard; //Smart Dashboard & OI must be at the end
 	public static OI oi; //Smart Dashboard & OI must be at the end
@@ -44,6 +47,7 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 		shooter = new Shooter();
 		navXMicro = new NavXMicro();
 		vision = new Vision();
+		cameraServo = new CameraServo();
 		
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());
@@ -124,6 +128,7 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		dashboard.update();  //makes SmartDashboard live when in disabled mode
 	}
 
 	/**
