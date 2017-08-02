@@ -22,8 +22,8 @@ public class DriveTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftSpeed = Robot.oi.stick.getRawAxis(RobotMap.JOYSTICK_LEFT_AXIS);  //must create this constant
-    	double rightSpeed = Robot.oi.stick.getRawAxis(RobotMap.JOYSTICK_RIGHT_AXIS);
+    	double leftSpeed = Robot.oi.driverStick.getRawAxis(RobotMap.DRIVESTICK_LEFT_AXIS);  //must create this constant
+    	double rightSpeed = Robot.oi.driverStick.getRawAxis(RobotMap.DRIVESTICK_RIGHT_AXIS);
     	Robot.drivetrain.tankDrive(leftSpeed, rightSpeed);	
     }
 

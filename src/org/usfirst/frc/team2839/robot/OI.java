@@ -4,8 +4,8 @@ import org.usfirst.frc.team2839.robot.commands.CameraDown;
 import org.usfirst.frc.team2839.robot.commands.CameraLeft;
 import org.usfirst.frc.team2839.robot.commands.CameraRight;
 import org.usfirst.frc.team2839.robot.commands.CameraUp;
-import org.usfirst.frc.team2839.robot.commands.SpinnerStart;
-import org.usfirst.frc.team2839.robot.commands.SpinnerStop;
+import org.usfirst.frc.team2839.robot.commands.ShooterStart;
+import org.usfirst.frc.team2839.robot.commands.ShooterStop;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,31 +44,32 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);  //added, need to import
-	Button J1 = new JoystickButton(stick, 1); //added, need to import
-	Button J8 = new JoystickButton(stick, 8); //added for using Xbox gamepad
-	Button J4 = new JoystickButton(stick, 4); //added for using Xbox gamepad
-	Button J2 = new JoystickButton(stick, 2); //added for using Xbox gamepad
-	Button J11 = new JoystickButton(stick, 11); //added, need to import
-	Button J5 = new JoystickButton(stick, 5); 
-	Button J6 = new JoystickButton(stick, 6); 
-	Button J3 = new JoystickButton(stick, 3); //added, need to import      //////////
-	Button J7 = new JoystickButton(stick, 7); 
+	public Joystick driverStick = new Joystick(RobotMap.OI_DRIVESTICK);  //added, need to import
+	public Joystick joystick = new Joystick(RobotMap.OI_JOYSTICK);  //added, need to import
+	Button D1 = new JoystickButton(driverStick, 1); //added, need to import
+	Button D8 = new JoystickButton(driverStick, 8); //added for using Xbox gamepad
+	Button D4 = new JoystickButton(driverStick, 4); //added for using Xbox gamepad
+	Button D2 = new JoystickButton(driverStick, 2); //added for using Xbox gamepad
+	Button D11 = new JoystickButton(driverStick, 11); //added, need to import
+	Button D5 = new JoystickButton(driverStick, 5); 
+	Button D6 = new JoystickButton(driverStick, 6); 
+	Button D3 = new JoystickButton(driverStick, 3); //added, need to import      //////////
+	Button D7 = new JoystickButton(driverStick, 7); 
 
 	
 	public OI(){							//added
-		J1.whenPressed(new DriveForward());  //added
-		J1.whenReleased(new DriveStop());  //added
-		J8.whileHeld(new DriveTank());
-		J4.whenPressed(new ShooterDeploy());
-		J2.whenPressed(new ShooterRetract());
-		J11.whenPressed(new MotorStartStop());
-		J5.whenPressed(new CameraUp());
-		J5.whenReleased(new CameraDown());
-		J6.whenPressed(new CameraLeft());
-		J6.whenReleased(new CameraRight());
-		J3.whenPressed(new SpinnerStart());
-		J3.whenReleased(new SpinnerStop());
+		D1.whenPressed(new DriveForward());  //added
+		D1.whenReleased(new DriveStop());  //added
+		D8.whileHeld(new DriveTank());
+		D4.whenPressed(new ShooterHoodDeploy());
+		D2.whenPressed(new ShooterHoodRetract());
+		D11.whenPressed(new MotorStartStop());
+		D5.whenPressed(new CameraUp());
+		D5.whenReleased(new CameraDown());
+		D6.whenPressed(new CameraLeft());
+		D6.whenReleased(new CameraRight());
+		D3.whenPressed(new ShooterStart(RobotPreferences.spinSlow()));
+		D3.whenReleased(new ShooterStop());
 		
 	}
 }

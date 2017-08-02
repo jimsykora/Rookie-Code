@@ -25,9 +25,9 @@ public class DeployUsingSwitchCommandGroup extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DetectShooterSwitch1()); //() for all commands since arguments may be needed
-    	addSequential(new ShooterDeploy()); 
+    	addSequential(new ShooterHoodDeploy()); 
     	addSequential(new MotorStartStop());
     	addSequential(new DetectShooterSwitch2()); //() for all commands since arguments may be needed
-    	addSequential(new ShooterRetract());
+    	addSequential(new ShooterHoodRetract());
     }
 }

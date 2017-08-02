@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 /**
  *
  */
-public class ShooterRetract extends InstantCommand {// use instant command for pneumatics
+public class ShooterHoodRetract extends InstantCommand {// use instant command for pneumatics
 
-    public ShooterRetract() {
+    public ShooterHoodRetract() {
         super();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

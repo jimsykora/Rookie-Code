@@ -21,7 +21,7 @@ public class CameraHorizontalRotate extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angle = Robot.oi.stick.getPOV();
+    	double angle = Robot.oi.driverStick.getPOV();
     	if (angle > -1 ) {
         	Robot.cameraServo.setHorizontalAngle(angle);
     	}

@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 	public static  NavXMicro navXMicro;
 	public static Vision vision;
 	public static CameraServo cameraServo;
-	public static SpinnerPID spinnerPID;
+	public static ShooterPID shooterPID;
 	
 	public static Dashboard dashboard; //Smart Dashboard & OI must be at the end
 	public static OI oi; //Smart Dashboard & OI must be at the end
@@ -48,6 +48,7 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 		navXMicro = new NavXMicro();
 		vision = new Vision();
 		cameraServo = new CameraServo();
+		shooterPID = new ShooterPID();
 		
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());

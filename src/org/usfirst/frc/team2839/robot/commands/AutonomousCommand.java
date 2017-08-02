@@ -27,8 +27,8 @@ public class AutonomousCommand extends CommandGroup {
     	addSequential(new TimedDriveForward(2));
     	addSequential(new TimedTurn(1, true));
     	addSequential(new DoDelay(2));
-    	addSequential(new ShooterDeploy());
+    	addSequential(new ShooterHoodDeploy());
     	addSequential(new DoDelay(2));
-    	addSequential(new ShooterRetract());
+    	addSequential(new ShooterHoodRetract());
     }
 }
