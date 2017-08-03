@@ -27,7 +27,7 @@ public class JoystickShooter extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	speed = Robot.oi.joystick.getY()*100.0*(16.0/44.0); // counts/rev of encoder*gear reduction;
+    	speed = Robot.oi.joystick.getY()*100.0/5.5; // (encoder counts/rev)/(gear reduction)
     	Robot.shooterPID.setSetpoint(speed);
     	Robot.shooter.setSpeed(Robot.shooterPID.getOutput());
     }

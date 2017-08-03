@@ -61,8 +61,8 @@ public class Shooter extends Subsystem { //contains only variables and methods
 	}
 	public double getEncoderRPS(){//rps is getERate/(100 counts/rev) //getERate is counts/sec
 		
-		double cpr = 100.0/(16.0/44.0); // counts/rev of encoder/gera reduction
-		return QEncoder.getRate()/cpr;
+		double cpr = 100.0*5.5; //cpr of shooter wheel (encoder counts/rev)*(gear reduction)
+		return QEncoder.getRate()/cpr;  //returns rps (rev/sec) of shooter wheel
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -54,7 +54,8 @@ public class OI {
 	Button D5 = new JoystickButton(driverStick, 5); 
 	Button D6 = new JoystickButton(driverStick, 6); 
 	Button D3 = new JoystickButton(driverStick, 3); //added, need to import      //////////
-	Button D7 = new JoystickButton(driverStick, 7); 
+	Button D7 = new JoystickButton(driverStick, 7);
+	Button J1 = new JoystickButton(joystick, 1);
 
 	
 	public OI(){							//added
@@ -70,6 +71,7 @@ public class OI {
 		D6.whenReleased(new CameraRight());
 		D3.whenPressed(new ShooterStart(RobotPreferences.spinSlow()));
 		D3.whenReleased(new ShooterStop());
-		
+		//J1.whileHeld(new JoystickShooter());
+		//J1.whenReleased(new ShooterStart());
 	}
 }
