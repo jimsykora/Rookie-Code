@@ -37,6 +37,7 @@ public class Dashboard extends Subsystem {
 		SmartDashboard.putNumber("NavX roll", Robot.navXMicro.getRoll());
 		SmartDashboard.putNumber("NavX x distance", Robot.navXMicro.getDisplacementX());
 		SmartDashboard.putNumber("NavX x gyro", Robot.navXMicro.getRawGyroX());
+		SmartDashboard.putNumber("Turret angle", Robot.turret.getPotAngle());
 	}
 
     public void initDefaultCommand() {

@@ -25,10 +25,12 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 	public static  ExampleSubsystem exampleSubsystem; // ExampleSubsystem is equiv to a directory path 		& exampleSubsystem is the name of thar directory
 	public static  Drivetrain drivetrain;  //Drivetrain was System, new Drivetrain() was null
 	public static  Shooter shooter;
+	public static ShooterPID shooterPID;
+	public static  Turret turret;
+	public static TurretPID turretPID;
 	public static  NavXMicro navXMicro;
 	public static Vision vision;
 	public static CameraServo cameraServo;
-	public static ShooterPID shooterPID;
 	
 	public static Dashboard dashboard; //Smart Dashboard & OI must be at the end
 	public static OI oi; //Smart Dashboard & OI must be at the end
@@ -45,10 +47,12 @@ public class Robot extends IterativeRobot {  //the Robot class is the only place
 		exampleSubsystem = new ExampleSubsystem();
 		drivetrain = new Drivetrain();
 		shooter = new Shooter();
+		shooterPID = new ShooterPID();
+		turret = new Turret();
+		turretPID = new TurretPID();
 		navXMicro = new NavXMicro();
 		vision = new Vision();
 		cameraServo = new CameraServo();
-		shooterPID = new ShooterPID();
 		
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());

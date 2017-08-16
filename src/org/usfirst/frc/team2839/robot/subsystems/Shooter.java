@@ -3,7 +3,6 @@ package org.usfirst.frc.team2839.robot.subsystems;
 import org.usfirst.frc.team2839.robot.RobotMap;
 import org.usfirst.frc.team2839.robot.commands.DeployUsingSwitchCommandGroup;
 import org.usfirst.frc.team2839.robot.commands.JoystickShooter;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
@@ -67,7 +66,7 @@ public class Shooter extends Subsystem { //contains only variables and methods
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new JoystickShooter()); //starts this coommand running until another command requires this subsystem 
+    	//setDefaultCommand(new JoystickShooter()); //starts this coommand running until another command requires this subsystem 
     }
 }
 

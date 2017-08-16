@@ -1,46 +1,47 @@
 package org.usfirst.frc.team2839.robot.subsystems;
 
-import org.usfirst.frc.team2839.robot.Robot;
-import org.usfirst.frc.team2839.robot.RobotPreferences;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import org.usfirst.frc.team2839.robot.Robot;
+import org.usfirst.frc.team2839.robot.RobotMap;
+import org.usfirst.frc.team2839.robot.RobotPreferences;
+import org.usfirst.frc.team2839.robot.commands.TurretStart;
 
 /**
  *
  */
-public class ShooterPID extends PIDSubsystem {
-	double output = 0.0;
+public class TurretPID extends PIDSubsystem {
+	double output = Robot.turret.turretEncoder.getAverageVoltage()-RobotMap.OFFSET_TURRET;
 	boolean outputValid = false;
-//	int targetRate = 0;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
-	double tolerance = 0.0;
+	double targetAngle = 2.5;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
+	double tolerance = 0.1;
 
     // Initialize your subsystem here
-    public ShooterPID() {
+    public TurretPID() {
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("SpinnerPID",0,0,0,0);
+    	super("TurretPID",0,0,0);
     	this.setSetpoint(0.0);
+    	getPIDController().setContinuous(true);
     }
     
     public void enable()  {
-    	this.getPIDController().setPID(RobotPreferences.spinP(), RobotPreferences.spinI(), RobotPreferences.spinD(), RobotPreferences.spinF());
-    	double maxSpeed = RobotPreferences.spinMaxSpeed(); //set to <1.0 to limit max motor speed
+    	this.getPIDController().setPID(RobotPreferences.turretP(), RobotPreferences.turretI(), RobotPreferences.turretD());
+    	double maxSpeed = RobotPreferences.turretMaxSpeed(); //set to <1.0 to limit max motor speed
     	this.setOutputRange(-maxSpeed, maxSpeed);
+    	this.setInputRange(0.0, 5.0);
     	outputValid = false;
     	super.enable();
-    }
-
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
 
     protected double returnPIDInput() {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.shooter.getEncoderRPS(); 
+        //return Robot.turret.getPotAngle();
+        return Robot.turret.turretEncoder.getAverageVoltage()-RobotMap.OFFSET_TURRET;//2.5 is the joystick signal when pushed forward
     }
 
     protected void usePIDOutput(double output) {
@@ -48,6 +49,7 @@ public class ShooterPID extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     	this.output = output;
     	outputValid = true;
+
     }
     public double getOutput() {
     	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == meams "is equal to", || means "or"
@@ -58,13 +60,19 @@ public class ShooterPID extends PIDSubsystem {
     public void setRawTolerance(double tolerance) {
     	this.tolerance = tolerance;
     }
-   /* public boolean onRawTargrt() {
+    /*public boolean onRawTargrt() {   //use when having pre set turret positions
     	if(Math.abs(getPIDController().getSetpoint() - Robot.shooter.getEncoderRPS()) < tolerance) {
-    		targetRate = targetRate +1;
+    		targetAngle = targetAngle +1;
     	}
     	else {
-    		targetRate = 0;
+    		targetAngle = 0;
     	}
-    	return (targetRate >= RobotPreferences.targetRate());
+    	//return (targetAngle >= RobotPreferences.targetRate());
+    	return (targetAngle >= 0.3);
     }*/
+
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    }
 }

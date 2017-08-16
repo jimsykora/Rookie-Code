@@ -18,6 +18,7 @@ public class RobotMap {
 	//public static final int DRIVETRAIN_RR_MOTOR = 7;  //when using 4 drivetrain motors
 	//public static final int DRIVETRAIN_LR_MOTOR = 3;  //when using 4 drivetrain motors
 	public static final int SHOOTMOTOR = 7;
+	public static final int TURRETMOTOR = 6;
 	public static final int CAMERA_HORIZONTAL_SERVO = 8;
 	public static final int CAMERA_VERTICAL_SERVO = 9;
 	
@@ -41,6 +42,10 @@ public class RobotMap {
 	
 	//Analog inputs-avoid duplicate values
 	public static final int IR_DISTANCE_SENSOR = 6;
+	public static final int TURRET_ENCODER = 3;
+	
+	//Constants
+	public static double OFFSET_TURRET = 0.0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

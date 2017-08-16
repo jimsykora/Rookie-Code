@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.Preferences;
 public class RobotPreferences {  
 	//for driving PID
 	public static double spinP() {
-		return Preferences.getInstance().getDouble("spinP", 0.4);  //add to subsystem PID: "enable method"
+		return Preferences.getInstance().getDouble("spinP", 0.1);  //add to subsystem PID: "enable method"
 	}
 	public static double spinI() {
-		return Preferences.getInstance().getDouble("spinI", 0.4);
+		return Preferences.getInstance().getDouble("spinI", 0.04);
 	}
 	public static double spinD() {
 		return Preferences.getInstance().getDouble("spinD", 0.0);
 	}
 	public static double spinF() {
-		return Preferences.getInstance().getDouble("spinF", 0.5);
+		return Preferences.getInstance().getDouble("spinF", 0.0); //works best at 0.0
 	}
 	public static double spinMaxSpeed() {
 		return Preferences.getInstance().getDouble("spinMaxSpeed", 0.8);
@@ -32,5 +32,17 @@ public class RobotPreferences {
 	}
 	public static double spinFast() {
 		return Preferences.getInstance().getDouble("fastSpin", 15);
+	}
+	public static double turretP() {
+		return Preferences.getInstance().getDouble("turretP", -1.0);  //add to subsystem PID: "enable method"
+	}
+	public static double turretI() {
+		return Preferences.getInstance().getDouble("turretI", 0.0);
+	}
+	public static double turretD() {
+		return Preferences.getInstance().getDouble("turretD", 0.0);
+	}
+	public static double turretMaxSpeed() {
+		return Preferences.getInstance().getDouble("turretMaxSpeed", 1.0);
 	}
 }
