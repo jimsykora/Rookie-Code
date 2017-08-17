@@ -43,9 +43,6 @@ public class RobotMap {
 	//Analog inputs-avoid duplicate values
 	public static final int IR_DISTANCE_SENSOR = 6;
 	public static final int TURRET_ENCODER = 3;
-	
-	//Constants
-	public static double OFFSET_TURRET = 0.0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

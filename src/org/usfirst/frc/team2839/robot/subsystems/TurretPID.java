@@ -11,10 +11,10 @@ import org.usfirst.frc.team2839.robot.commands.TurretStart;
  *
  */
 public class TurretPID extends PIDSubsystem {
-	double output = Robot.turret.turretEncoder.getAverageVoltage()-RobotMap.OFFSET_TURRET;
+	double output = 0.0;
 	boolean outputValid = false;
 	double targetAngle = 2.5;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
-	double tolerance = 0.1;
+	double tolerance = 1.0;
 
     // Initialize your subsystem here
     public TurretPID() {
@@ -31,7 +31,7 @@ public class TurretPID extends PIDSubsystem {
     	this.getPIDController().setPID(RobotPreferences.turretP(), RobotPreferences.turretI(), RobotPreferences.turretD());
     	double maxSpeed = RobotPreferences.turretMaxSpeed(); //set to <1.0 to limit max motor speed
     	this.setOutputRange(-maxSpeed, maxSpeed);
-    	this.setInputRange(0.0, 5.0);
+    	this.setInputRange(-180.0, 180.0);
     	outputValid = false;
     	super.enable();
     }
@@ -40,8 +40,7 @@ public class TurretPID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        //return Robot.turret.getPotAngle();
-        return Robot.turret.turretEncoder.getAverageVoltage()-RobotMap.OFFSET_TURRET;//2.5 is the joystick signal when pushed forward
+        return Robot.turret.getPotAngle();
     }
 
     protected void usePIDOutput(double output) {

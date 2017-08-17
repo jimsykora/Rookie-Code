@@ -28,13 +28,13 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("targetRate", 5.0);
 	}
 	public static double spinSlow() {
-		return Preferences.getInstance().getDouble("slowSpin", 2);
+		return Preferences.getInstance().getDouble("spinSlow", 2);
 	}
 	public static double spinFast() {
-		return Preferences.getInstance().getDouble("fastSpin", 15);
+		return Preferences.getInstance().getDouble("spinFast", 15);
 	}
 	public static double turretP() {
-		return Preferences.getInstance().getDouble("turretP", -1.0);  //add to subsystem PID: "enable method"
+		return Preferences.getInstance().getDouble("turretP", 0.015);  //add to subsystem PID: "enable method"
 	}
 	public static double turretI() {
 		return Preferences.getInstance().getDouble("turretI", 0.0);
@@ -44,5 +44,8 @@ public class RobotPreferences {
 	}
 	public static double turretMaxSpeed() {
 		return Preferences.getInstance().getDouble("turretMaxSpeed", 1.0);
+	}
+	public static double turretOffset() {
+		return Preferences.getInstance().getDouble("turretOffset", -66.0);
 	}
 }

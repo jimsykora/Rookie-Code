@@ -18,7 +18,6 @@ public class Dashboard extends Subsystem {
 						//pushing this button on the Smart Dashboard will activate this command
 		SmartDashboard.putData("Deploy Shooter",new ShooterHoodDeploy());  //use new to create a new instance
 		SmartDashboard.putData("Reset Yaw",new ResetYaw());
-		SmartDashboard.putData("Reset X",new ResetX());
 		SmartDashboard.putData("Spin Slow",new ShooterStart(RobotPreferences.spinSlow()));
 		SmartDashboard.putData("Spin Fast",new ShooterStart(RobotPreferences.spinFast()));
 		SmartDashboard.putData("Stop Spinner",new ShooterStop());
@@ -31,13 +30,13 @@ public class Dashboard extends Subsystem {
 		SmartDashboard.putNumber("Encoder Count", Robot.shooter.getEncoderCount());
 		SmartDashboard.putNumber("Encoder Rate", Robot.shooter.getEncoderRate());
 		SmartDashboard.putNumber("Encoder RPS", Robot.shooter.getEncoderRPS());
-		SmartDashboard.putNumber("Joystick throttle", Robot.oi.driverStick.getThrottle());
 		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());
 		SmartDashboard.putNumber("NavX pitch", Robot.navXMicro.getPitch());
 		SmartDashboard.putNumber("NavX roll", Robot.navXMicro.getRoll());
-		SmartDashboard.putNumber("NavX x distance", Robot.navXMicro.getDisplacementX());
-		SmartDashboard.putNumber("NavX x gyro", Robot.navXMicro.getRawGyroX());
-		SmartDashboard.putNumber("Turret angle", Robot.turret.getPotAngle());
+		SmartDashboard.putNumber("Raw Turret angle", 180-Robot.turret.turretEncoder.getAverageVoltage()*72);
+		SmartDashboard.putNumber("Turret angle 1", Robot.oi.joystick.getThrottle()*180);  // if using Throttle
+		SmartDashboard.putNumber("Turret angle 2", Robot.oi.joystick.getTwist()*180);  // if using Twist
+		SmartDashboard.putNumber("Turret angle 3", Robot.oi.joystick.getDirectionDegrees());  // if using joystick handle
 	}
 
     public void initDefaultCommand() {

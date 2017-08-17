@@ -2,6 +2,7 @@ package org.usfirst.frc.team2839.robot.subsystems;
 
 import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotMap;
+import org.usfirst.frc.team2839.robot.RobotPreferences;
 import org.usfirst.frc.team2839.robot.commands.TurretStart;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -27,12 +28,12 @@ public class Turret extends Subsystem {
 		turretMotor.setSpeed(angle);
 	}
 	public double getPotAngle(){
-		return turretEncoder.getAverageVoltage()-RobotMap.OFFSET_TURRET;
+		return (180-turretEncoder.getAverageVoltage()*72)  - (RobotPreferences.turretOffset()+0.0);//the last addition may need tweaking
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new TurretStart(0.0-RobotMap.OFFSET_TURRET));
+    	setDefaultCommand(new TurretStart());
     }
 }
 

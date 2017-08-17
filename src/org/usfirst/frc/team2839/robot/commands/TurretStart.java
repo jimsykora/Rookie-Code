@@ -12,24 +12,24 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurretStart extends Command {
 	double angle = 0.0;
 	
-    public TurretStart(double degrees) {
+    public TurretStart() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.turret);
     	requires(Robot.turretPID);
-    	angle = degrees;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.turretPID.setAbsoluteTolerance(0.1);//.setRawTolerance(RobotPreferences.spinTolerance());
+    	Robot.turretPID.setRawTolerance(1.0);//tolerance in degrees
     	Robot.turretPID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	angle=((5-(Robot.oi.joystick.getThrottle()+1)*2.5)); //if using throttle
-    	//angle=((5-(Robot.oi.joystick.getDirectionDegrees()+180)/72));// if using joystick
+    	angle=Robot.oi.joystick.getThrottle()*180; //if using throttle on a joystick
+    	//angle=Robot.oi.joystick.getTwist()*180; //if using twist on a joystick
+    	//angle=Robot.oi.joystick.getDirectionDegrees();// if using the handle on a joystick
     	Robot.turretPID.setSetpoint(angle);
     	Robot.turret.setAngle(Robot.turretPID.getOutput());
     }
